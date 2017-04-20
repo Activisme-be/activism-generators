@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91c87457-1c8a-419c-871b-91c3e8f9bc89" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artillery.iml" afterPath="$PROJECT_DIR$/.idea/artillery.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/CreateControllerTest.php" afterPath="$PROJECT_DIR$/tests/CreateControllerTest.php" />
-    </list>
+    <list default="true" id="91c87457-1c8a-419c-871b-91c3e8f9bc89" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -232,12 +229,12 @@
       <workItem from="1492701176340" duration="11000" />
       <workItem from="1492702442928" duration="5715000" />
       <workItem from="1492710729784" duration="7250000" />
-      <workItem from="1492723055617" duration="115000" />
+      <workItem from="1492723055617" duration="144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13091000" />
+    <option name="totallyTimeSpent" value="13120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="752" extended-state="6" />
