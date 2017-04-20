@@ -7,6 +7,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @todo docblock
+ */
 class ModelCodeigniterCommand extends BaseCommand
 {
     /**
@@ -53,7 +56,7 @@ class ModelCodeigniterCommand extends BaseCommand
 
         if (! file_exists($fullPath = "{$this->appModelPath()}/{$model}.php")) {
             file_put_contents($fullPath, $file);
-            $output->writeln("<info>Model created uccessfully!</info>");
+            $output->writeln("<info>Model created successfully!</info>");
         } else {
             $output->writeln('<error>Model already exists.</error>');
         }

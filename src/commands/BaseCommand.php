@@ -22,9 +22,9 @@ class BaseCommand extends Command
     {
         parent::__construct();
 
-        $this->stubPath          = '';
-        $this->appControllerPath = '';
-        $this->appModelPath      = '';
+        $this->stubPath          = '../stubs';
+        $this->appControllerPath = './application/controllers';
+        $this->appModelPath      = './application/models';
     }
 
     /**
