@@ -1,0 +1,24 @@
+{
+    "name": "activisme/artillerie",
+    "description": "Console helper for the CodeIgniter framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tjoosten",
+            "email": "Tjoosten3@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/console": "^3.3"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3"
+    },
+    "autoload": {
+        "psr-4":{
+            "ActivismeBe\\Artillery\\": "src/"
+        },
+    }
+}
