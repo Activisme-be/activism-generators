@@ -1,13 +1,18 @@
 #!/usr/bin/env php
 <?php
 
+use ActivismeBe\Artillery\Commands\ControllerCommand;
+use ActivismeBe\Artillery\Commands\ModelCodeigniterCommand;
+use ActivismeBe\Artillery\Commands\ModelEloquentCommand;
+use Symfony\Component\Console\Application;
+
 require __DIR__ . '/vendor/autoload.php';
 
-$shell = new \Symfony\Component\Console\Application('Artillery', 'v1.0.0-dev');
+$shell = new Application('Artillery', 'v1.0.0-dev');
 
-$shell->add(new \ActivismeBe\Artillery\Commands\ControllerCommand());
-$shell->add(new \ActivismeBe\Artillery\Commands\ModelCodeigniterCommand());
-// $shell->add(new \ActivismeBe\Artillery\Commands\ModelEloquentCommand());
+$shell->add(new ControllerCommand());
+$shell->add(new ModelCodeigniterCommand());
+$shell->add(new ModelEloquentCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLiibraryCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLicenseCommand());

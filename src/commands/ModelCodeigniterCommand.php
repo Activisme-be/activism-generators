@@ -57,6 +57,8 @@ class ModelCodeigniterCommand extends BaseCommand
         if (! file_exists($fullPath = "{$this->getAppModelPath()}/{$model}.php")) {
             file_put_contents($fullPath, $file);
             $output->writeln("<info>Model created successfully!</info>");
+
+            shell_exec('composer dump-autoload');
         } else {
             $output->writeln('<error>Model already exists.</error>');
         }
