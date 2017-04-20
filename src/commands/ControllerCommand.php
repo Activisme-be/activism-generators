@@ -1,6 +1,6 @@
 <?php
 
-namespace ActivismeBE\ArtilleryCommands;
+namespace ActivismeBE\Artillery\Commands;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

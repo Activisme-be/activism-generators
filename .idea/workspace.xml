@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c87457-1c8a-419c-871b-91c3e8f9bc89" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/commands/BaseCommand.php" afterPath="$PROJECT_DIR$/src/commands/BaseCommand.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/commands/ControllerCommand.php" afterPath="$PROJECT_DIR$/src/commands/ControllerCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/commands/ModelCodeigniterCommand.php" afterPath="$PROJECT_DIR$/src/commands/ModelCodeigniterCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/CreateModelTest.php" afterPath="$PROJECT_DIR$/tests/CreateModelTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,7 +39,7 @@
       <file leaf-file-name="CreateModelTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/CreateModelTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
+            <state relative-caret-position="229">
               <caret line="29" column="84" lean-forward="false" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
               <folding>
                 <element signature="e#47#106#0#PHP" expanded="true" />
@@ -52,7 +48,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model-codeigniter.stub" pinned="false" current-in-tab="true">
+      <file leaf-file-name="artillery" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/artillery">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model-codeigniter.stub" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stubs/model-codeigniter.stub">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -62,12 +68,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerCommand.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ControllerCommand.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/commands/ControllerCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="34">
+              <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+              <folding>
+                <element signature="e#50#100#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,6 +113,7 @@
         <option value="$PROJECT_DIR$/src/commands/ModelCodeigniterCommand.php" />
         <option value="$PROJECT_DIR$/tests/CreateModelTest.php" />
         <option value="$PROJECT_DIR$/src/commands/BaseCommand.php" />
+        <option value="$PROJECT_DIR$/src/commands/ControllerCommand.php" />
       </list>
     </option>
   </component>
@@ -295,15 +304,15 @@
       <option name="presentableId" value="Default" />
       <updated>1492701175197</updated>
       <workItem from="1492701176340" duration="11000" />
-      <workItem from="1492702442928" duration="3515000" />
+      <workItem from="1492702442928" duration="4062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3526000" />
+    <option name="totallyTimeSpent" value="4073000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5181237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -333,7 +342,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/commands/ControllerCommand.php</url>
+          <line>4</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -369,14 +386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/commands/ControllerCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/commands/ModelCodeigniterCommand.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
@@ -387,9 +396,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/stubs/model-codeigniter.stub">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/CreateModelTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="229">
           <caret line="29" column="84" lean-forward="false" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
           <folding>
             <element signature="e#47#106#0#PHP" expanded="true" />
@@ -397,11 +414,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stubs/model-codeigniter.stub">
+    <entry file="file://$PROJECT_DIR$/artillery">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commands/ControllerCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+          <folding>
+            <element signature="e#50#100#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
