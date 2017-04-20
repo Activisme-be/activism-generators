@@ -3,13 +3,11 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Symfony\Component\Console\Application;
-
-$shell = new Application();
-
-// Command register
+$shell = new \Symfony\Component\Console\Application('Artillery', 'v1.0.0-dev');
 $shell->add(new \ActivismeBe\Artillery\Commands\ControllerCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\ModelCodeigniterCommand());
-// END Command register
-
+$shell->add(new \ActivismeBe\Artillery\Commands\ModelEloquentCommand());
+$shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
+$shell->add();
+$shell->add();
 $shell->run();

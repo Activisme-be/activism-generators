@@ -97,7 +97,7 @@ class ControllerCommand extends BaseCommand
      * @param  string           $name       The controller name
      * @param  mixed            $stub       The controller stub.
      * @param  OutputInterface  $output     An OutputInterface instance
-     * @return nixed
+     * @return mixed
      */
     private function makeEmptyController($name, $stub, OutputInterface $output)
     {

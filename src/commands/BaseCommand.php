@@ -1,6 +1,9 @@
 <?php
+
 namespace ActivismeBe\Artillery\Commands;
+
 use Symfony\Component\Console\Command\Command;
+
 /**
  * @todo docblock
  */
@@ -62,7 +65,8 @@ class BaseCommand extends Command
         if (! file_exists($fullPath = $filepath)) {
             return $fullPath;
         } else {
-            return $output->writeln('<error>Controller already exists.</error>');
+            $formatter = $this->getHelper('formatter');
+            return $output->writeln('<error>The controller already exists.</error>');
         }
     }
 
