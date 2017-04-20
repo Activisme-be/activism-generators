@@ -19,7 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ActivismeBE\\Artillery\\Tests\\": "tests/"
+            "ActivismeBe\\Artillery\\Tests\\": "tests/"
         }
     },
     "autoload": {

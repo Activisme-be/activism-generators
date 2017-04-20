@@ -1,17 +1,14 @@
 <?php
-
 namespace ActivismeBe\Artillery\Commands;
-
 use Symfony\Component\Console\Command\Command;
-
 /**
  * @todo docblock
  */
 class BaseCommand extends Command
 {
-    protected $stubpath;
-    protected $appControllerPath;
-    protected $appModelPath;
+    protected $stubPath;            /** */
+    protected $appControllerPath;   /** */
+    protected $appModelPath;        /** */
 
     /**
      * BaseCommand constructor.
@@ -22,30 +19,73 @@ class BaseCommand extends Command
     {
         parent::__construct();
 
-        $this->stubPath          = '../stubs';
+        $this->stubPath          = __DIR__ . '/../stubs';
         $this->appControllerPath = './application/controllers';
         $this->appModelPath      = './application/models';
     }
-
     /**
      * @todo docblock
      */
-    public function stubPath()
+    public function getStubPath()
     {
-        $this->stubpath;
+        return $this->stubPath;
     }
 
     /**
      * Controller path for the codeigniter application.
      *
+     * @return string
      */
-    public function appControllerPath()
+    public function getAppControllerPath()
     {
         return $this->appControllerPath;
     }
 
+    /**
+     *
+     *
+     */
     public function appModelPath()
     {
         return $this->appModelPath;
+    }
+
+    /**
+     * Check if a given file exists.
+     *
+     * @param  string           $filepath  The full filepath to be checked.
+     * @param  OutputInterface  $output    An Output interface instance.
+     * @return mixed
+     */
+    protected function checkFileExists($filepath, $output)
+    {
+        if (! file_exists($fullPath = $filepath)) {
+            return $fullPath;
+        } else {
+            return $output->writeln('<error>Controller already exists.</error>');
+        }
+    }
+
+    /**
+     * @todo docblock
+     */
+    protected function getStubContent($filePath, $name)
+    {
+        $stub = file_get_contents($filePath);
+        $stub = str_replace('{{ class }}', ucfirst($name), $stub);
+
+        return $stub;
+    }
+
+    /**
+     * @todo docblock
+     */
+    protected function writeFile($filename, $stub)
+    {
+        if (file_put_contents($filename, $stub)) {
+            return true;
+        }
+
+        return false;
     }
 }

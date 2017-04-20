@@ -19,7 +19,7 @@ class ModelCodeigniterCommand extends BaseCommand
      */
     protected function configure()
     {
-        $this->setName('make:model-CodeIgniter')
+        $this->setName('make:model-codeigniter')
             ->setDescription('Create a new model')
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the model class')
             ->addOption('suffix', null, InputOption::VALUE_OPTIONAL, 'Default: _m, the model suffix will be replaced with the defined.');

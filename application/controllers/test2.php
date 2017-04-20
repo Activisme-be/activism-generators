@@ -1,12 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /** 
- * Class: {{ class }}
+ * Class: Test2
  */
-class {{ class }} extends MY_Controller
+class Test2 extends MY_Controller
 {
     /**
- 	 * {{ class }} constructor
+ 	 * Test2 constructor
  	 *
  	 * @return void
  	 */

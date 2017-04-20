@@ -15,7 +15,25 @@ class CreateControllerTest extends \PHPUnit\Framework\TestCase
      * @test
      * @todo Create the testing logic
      */
-    public function CreateController()
+    public function CreateEmptyController()
+    {
+        //
+    }
+
+    /**
+     * @test
+     * @todo Create the testing logic
+     */
+    public function CreateResourceController()
+    {
+        //
+    }
+
+    /**
+     * @test
+     * @todo Create the testing logic
+     */
+    public function CreateApiController()
     {
         //
     }

@@ -1,13 +1,21 @@
 <?php
 
-namespace ActivismeBE\Artillery\Commands;
+namespace ActivismeBe\Artillery\Commands;
 
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @todo docblock
+ * Disclaimer controller.
+ *
+ * @author      Tim Joosten   <Topairy@gmail.com>
+ * @copyright   Tim Joosten   <Topairy@gmail.com>
+ * @license:    MIT license
+ * @since       2017
+ * @package     Artillery
+ * @subpackage  Controller command.
  */
 class ControllerCommand extends BaseCommand
 {
@@ -20,7 +28,9 @@ class ControllerCommand extends BaseCommand
     {
         $this->setName('make:controller')
             ->setDescription('Create a new controller')
-            ->addArgument('name', InputArgument::REQUIRED, 'The name of the controller class');
+            ->addArgument('name', InputArgument::REQUIRED, 'The name of the controller class')
+            ->addOption('resource', 'r',InputOption::VALUE_NONE, 'Indicate that the controller is for resource operations.')
+            ->addOption('api', 'a', InputOption::VALUE_NONE, 'Indicate that the controller is for API operations.');
     }
 
     /**
@@ -32,30 +42,69 @@ class ControllerCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $name = $input->getArgument('name');
-		$this->make($name, $output);
+        $name       = $input->getArgument('name');
+        $controller = ucfirst($name);
+
+        if ($input->getOption('resource')) { // The controller is for resource operations.
+            $template = $this->getStubContent("{$this->getStubPath()}/controller-resource.stub", $name);
+            $this->makeResourceController($name, $template, $output);
+        } elseif ($input->getOption('api')) { // The controller is for API operations.
+            $template = $this->getStubContent("{$this->getStubPath()}/controller-api.stub", $name);
+            $this->makeApiController($name, $template, $output);
+        } else { // Just need an empty controller.
+            $template = $this->getStubContent("{$this->getStubPath()}/controller.stub", $name);
+            $this->makeEmptyController($name, $template, $output);
+        }
     }
 
     /**
-     * Create a controller and placed into application/controllers
+     * Create an API controller and placed into application/controllers.
      *
-     * @param  mixed            $controller The controller name.
-     * @param  OutputInterface  $output     An OutputInterface instance
-     * @return bool
+     * @param  string           $name       The controller name.
+     * @param  mixed            $stub       The controller stub.
+     * @param  OutputInterface  $output     An OutputInterface instance.
+     * @return mixed
      */
-    private function make($controller, OutputInterface $output)
+    private function makeApiController($name, $stub, OutputInterface $output)
     {
-        $stub       = file_get_contents($this->stubPath() . '/controller.stub');
-        $controller = ucfirst($controller);
-        $file       = str_replace('{{ class }}', ucfirst($controller), $stub);
-
-        if (! file_exists($fullPath = "{$this->appControllerPath()}/{$controller}.php")) {
-            file_put_contents($fullPath, $file);
-            $output->writeln("<info>Controller created successfully!</info>");
-        } else {
-            $output->writeln('<error>Controller already exists.</error>');
+        if ($filename = $this->checkFileExists("{$this->getAppControllerPath()}/{$name}.php", $output)) {
+            if ($this->writeFile($filename, $stub)) {
+                $output->writeln('<info>API Controller created successfully!</info>');
+            }
         }
+    }
 
-        return false;
+    /**
+     * Create an resource controller and placed into application/controllers.
+     *
+     * @param  string           $name       The controller name.
+     * @param  mixed            $stub       The controller stub.
+     * @param  OutputInterface  $output     An OutputInterface instance.
+     * @return mixed
+     */
+    private function makeResourceController($name, $stub, OutputInterface $output)
+    {
+        if ($filename = $this->checkFileExists("{$this->getAppControllerPath()}/{$name}.php", $output)) {
+            if ($this->writeFile($filename, $stub)) {
+                $output->writeln('<info>Resource controller created successfully!</info>');
+            }
+        }
+    }
+
+    /**
+     * Create an empty controller and placed into application/controllers
+     *
+     * @param  string           $name       The controller name
+     * @param  mixed            $stub       The controller stub.
+     * @param  OutputInterface  $output     An OutputInterface instance
+     * @return nixed
+     */
+    private function makeEmptyController($name, $stub, OutputInterface $output)
+    {
+        if ($filename = $this->checkFileExists("{$this->getAppControllerPath()}/{$name}.php", $output)) {
+            if ($this->writeFile($filename, $stub)) {
+                $output->writeln("<info>Empty controller created successfully!</info>");
+            }
+        }
     }
 }

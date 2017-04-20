@@ -15,6 +15,6 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'ActivismeBe\\Artillery\\Tests\\' => array($baseDir . '/tests'),
     'ActivismeBe\\Artillery\\' => array($baseDir . '/src'),
-    'ActivismeBE\\Artillery\\Tests\\' => array($baseDir . '/tests'),
 );
