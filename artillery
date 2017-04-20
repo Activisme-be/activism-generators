@@ -10,6 +10,7 @@ $shell = new Application();
 
 // Command register
 $shell->add(new \ActivismeBe\Artillery\Commands\ControllerCommand());
+$shell->add(new \ActivismeBe\Artillery\Commands\ModelCodeigniterCommand());
 // END Command register
 
 $shell->run();
