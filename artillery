@@ -4,10 +4,12 @@
 require __DIR__ . '/vendor/autoload.php';
 
 $shell = new \Symfony\Component\Console\Application('Artillery', 'v1.0.0-dev');
+
 $shell->add(new \ActivismeBe\Artillery\Commands\ControllerCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\ModelCodeigniterCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\ModelEloquentCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
-$shell->add();
-$shell->add();
+$shell->add(new \ActivismeBe\Artillery\Commands\CreateLiibraryCommand());
+$shell->add(new \ActivismeBe\Artillery\Commands\CreateLicenseCommand());
+
 $shell->run();

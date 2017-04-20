@@ -1,0 +1,73 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Class: {{ class }}
+ */
+class {{ class }} extends CI_Model
+{
+	/**
+	 * {{ class }} Constructor
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
+    /**
+     * Show the index page for the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show a specific resource.
+     */
+    public function show()
+    {
+        $param = $this->uri->segment(3);
+    }
+
+    /**
+     * Create view for a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a new resource in the database.
+     */
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Edit view for a resource
+     */
+    public function edit()
+    {
+        $param = $this->uri->segment(3);
+    }
+
+    /**
+     * Update a resource in the database.
+     */
+    public function update()
+    {
+        $param = $this->uri->segment(3);
+    }
+
+    /**
+     * Delete a resource.
+     */
+    public function delete()
+    {
+        $param = $this->uri->segment(3);
+    }
+}
