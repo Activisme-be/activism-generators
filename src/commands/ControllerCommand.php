@@ -46,7 +46,7 @@ class ControllerCommand extends BaseCommand
         $controller = ucfirst($controller);
         $file       = str_replace('{{ class }}', ucfirst($controller), $stub);
 
-        if ($this->controllerExists())) {
+        if (! file_exists($fullPath = "{$this->appControllerPath()}/{$controller}.php")) {
             file_put_contents($fullPath, $file);
             $output->writeln("<info>Controller created successfully!</info>");
         } else {

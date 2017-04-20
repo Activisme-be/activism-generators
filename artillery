@@ -6,8 +6,10 @@ require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
-$application = new Application();
+$shell = new Application();
 
-// ... register commands
+// Command register
+$shell->add(new \ActivismeBe\Artillery\Commands\ControllerCommand());
+// END Command register
 
-$application->run();
+$shell->run();

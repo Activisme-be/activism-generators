@@ -4,10 +4,14 @@ namespace ActivismeBe\Artillery\Commands;
 
 use Symfony\Component\Console\Command\Command;
 
+/**
+ * @todo docblock
+ */
 class BaseCommand extends Command
 {
     protected $stubpath;
     protected $appControllerPath;
+    protected $appModelPath;
 
     /**
      * BaseCommand constructor.
@@ -18,10 +22,14 @@ class BaseCommand extends Command
     {
         parent::__construct();
 
-        $this->stubPath          =
-        $this->appControllerPath =
+        $this->stubPath          = '';
+        $this->appControllerPath = '';
+        $this->appModelPath      = '';
     }
 
+    /**
+     * @todo docblock
+     */
     public function stubPath()
     {
         $this->stubpath;
@@ -36,17 +44,8 @@ class BaseCommand extends Command
         return $this->appControllerPath;
     }
 
-    /**
-     * Check if the controller already exists
-     *
-     * @return bool
-     */
-    public function controllerExists()
+    public function appModelPath()
     {
-        if (! file_exists($fullPath = "{$this->appControllerPath()}/{$controller}.php") {
-            return true;
-        }
-
-        return false;
+        return $this->appModelPath;
     }
 }
