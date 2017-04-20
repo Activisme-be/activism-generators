@@ -50,11 +50,11 @@ class ModelCodeigniterCommand extends BaseCommand
      */
     private function make($model, $suffix, OutputInterface $output)
     {
-        $stub  = file_get_contents($this->stubPath() . '/model-codeigniter.stub');
+        $stub  = file_get_contents($this->getStubPath() . '/model-codeigniter.stub');
         $model = ucfirst($model) . $suffix;
         $file  = str_replace('{{ class }}', ucfirst($model), $stub);
 
-        if (! file_exists($fullPath = "{$this->appModelPath()}/{$model}.php")) {
+        if (! file_exists($fullPath = "{$this->getAppModelPath()}/{$model}.php")) {
             file_put_contents($fullPath, $file);
             $output->writeln("<info>Model created successfully!</info>");
         } else {

@@ -48,7 +48,7 @@ class BaseCommand extends Command
      *
      *
      */
-    public function appModelPath()
+    public function getAppModelPath()
     {
         return $this->appModelPath;
     }
