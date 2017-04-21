@@ -7,7 +7,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @todo docblock
+ * ModelEloquentCommand
+ *
+ * @author      Tim Joosten   <Topairy@gmail.com>
+ * @copyright   Tim Joosten   <Topairy@gmail.com>
+ * @license:    MIT license
+ * @since       2017
+ * @package     Artillery
+ * @subpackage  ActivismeBe\Artillery\Commands
  */
 class ModelEloquentCommand extends BaseCommand
 {
@@ -19,7 +26,7 @@ class ModelEloquentCommand extends BaseCommand
     protected function configure()
     {
         $this->setName('make:model-eloquent')
-            ->setDescription('Create a new model')
+            ->setDescription('Create a new Eloquent model')
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the model class');
     }
 
@@ -41,7 +48,7 @@ class ModelEloquentCommand extends BaseCommand
 	 *
 	 * @param  string           $model      A model name.
 	 * @param  OutputInterface  $output     An OutputInterface instance.
-	 * @return void|bool
+	 * @return bool
 	 */
 	private function make($model, OutputInterface $output)
 	{
