@@ -32,6 +32,32 @@ class ModelEloquentCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
+		$name   = $input->getArgument('name');
+		$this->make($name, $output);
     }
+
+	/**
+	 * Create a model and placed into application/models.
+	 *
+	 * @param  string           $model      A model name.
+	 * @param  OutputInterface  $output     An OutputInterface instance.
+	 * @return void|bool
+	 */
+	private function make($model, OutputInterface $output)
+	{
+		$stub  = file_get_contents($this->getStubPath() . '/model-eloquent.stub');
+		$model = ucfirst($model);
+		$file  = str_replace('{{ class }}', ucfirst($model), $stub);
+
+		if (! file_exists($fullPath = "{$this->getAppModelPath()}/{$model}.php")) {
+			file_put_contents($fullPath, $file);
+			$output->writeln("<info>Model created successfully!</info>");
+
+			shell_exec('composer dump-autoload');
+		} else {
+			$output->writeln('<error>Model already exists.</error>');
+		}
+
+		return false;
+	}
 }
