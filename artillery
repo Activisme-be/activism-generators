@@ -1,9 +1,11 @@
 #!/usr/bin/env php
 <?php
 
+// Debugging code
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+//> End debugging code
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -13,9 +15,10 @@ $shell->add(new \ActivismeBe\Artillery\Commands\ControllerCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\ModelCodeigniterCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\ModelEloquentCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\CreateLibraryCommand());
+$shell->add(new \ActivismeBe\Artillery\Commands\CreateAuthCommand());
+// $shell->add(new \ActivismeBe\Artillery\Commands\CreateMiddlewareCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLicenseCommand());
-// $shell->add(new \ActivismeBe\Artillery\Commands\CreateAuthCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLanguageFileCommand());
 
 $shell->run();

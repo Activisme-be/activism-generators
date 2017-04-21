@@ -1,0 +1,23 @@
+<?php defined('BASEPATH') or exit('No direct cript access allowed');
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class: {{ class }}
+ */
+class {{ class }} extends Model
+{
+    /**
+     * The database table name.
+     *
+     * @string
+     */
+    protected $table = '{{ table }}';
+
+	/**
+	 * Mass-assign fields for the database.
+	 *
+	 * @return array
+	 */
+	 protected $fillable = [{{ fields }}];
+}
