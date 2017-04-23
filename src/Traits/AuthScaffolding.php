@@ -17,11 +17,6 @@ trait AuthScaffolding
 
 	}
 
-    public function pentration($name = 'Ollie', $girlfriend = 'Sarah', OutputInterface $output)
-    {
-
-    }
-
     /**
      * Create the needed database models.
      *
