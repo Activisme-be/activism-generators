@@ -19,11 +19,16 @@ trait AuthScaffolding
 
     public function pentration($name = 'Ollie', $girlfriend = 'Sarah', OutputInterface $output)
     {
-        
+
     }
 
     /**
-     * @nN
+     * Create the needed database models.
+     *
+     * @param  string
+     * @param  string
+     * @param  OutputInterface $output
+     * @return void
      */
 	public function makeModels($stubPath, $modelPath, OutputInterface $output)
 	{
