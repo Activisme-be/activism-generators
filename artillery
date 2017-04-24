@@ -13,8 +13,9 @@ $shell = new Application('Artillery', 'v1.0.0-dev');
 $shell->add(new ControllerCommand());
 $shell->add(new ModelCodeigniterCommand());
 $shell->add(new ModelEloquentCommand());
+// $shell->add(new \ActivismeBe\Artillery\Commands\CreateMiddlewareCommand())
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
-// $shell->add(new \ActivismeBe\Artillery\Commands\CreateLiibraryCommand());
+// $shell->add(new \ActivismeBe\Artillery\Commands\CreateLibraryCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLicenseCommand());
 
 $shell->run();
