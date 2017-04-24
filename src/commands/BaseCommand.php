@@ -15,6 +15,8 @@ use Symfony\Component\Console\Command\Command;
  */
 class BaseCommand extends Command
 {
+    // TODO: set views path function.
+
 	protected $stubPath;            /** @var string $stubPath¨			The path to the stubs.        			*/
     protected $appControllerPath;   /** @var string $appControllerPath 	The path to the application controllers.*/
     protected $appModelPath;        /** @var string $appModelPath		The path to the application models      */

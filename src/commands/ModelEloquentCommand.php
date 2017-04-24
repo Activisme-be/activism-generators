@@ -39,7 +39,7 @@ class ModelEloquentCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-		$name   = $input->getArgument('name');
+		$name = $input->getArgument('name');
 		$this->make($name, $output);
     }
 

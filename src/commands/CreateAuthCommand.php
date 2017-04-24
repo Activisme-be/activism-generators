@@ -2,10 +2,17 @@
 
 namespace ActivismeBe\Artillery\Commands;
 
+use Symfony\Component\Console\Input\InputOption;
 use ActivismeBe\Artillery\Traits\AuthScaffolding;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class CreateAuthCommand
+ *
+ * @package ActivismeBe\Artillery\Commands
+ */
 class CreateAuthCommand extends BaseCommand
 {
 	use AuthScaffolding;
@@ -18,9 +25,14 @@ class CreateAuthCommand extends BaseCommand
 	protected function configure()
 	{
 		// TODO: Set argument for database name, user, password, host, port.
-		
+
 		$this->setName('make:auth')
-			->setDescription('Create authencation system');
+			->setDescription('Create authencation system')
+            ->addArgument('db-user', InputArgument::REQUIRED, '')
+            ->addArgument('db-pass', InputArgument::REQUIRED, '')
+            ->addArgument('db-name', InputArgument::REQUIRED, '')
+            ->addOption('db-host', null, InputOption::VALUE_OPTIONAL, 'Default: localhost,')
+			->addOption('db-port', null, InputOption::VALUE_OPTIONAL, 'Default: 3306,');
 	}
 
 	/**
@@ -32,13 +44,12 @@ class CreateAuthCommand extends BaseCommand
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-        // TODO: Lock command out when is running.
-        // TODO: Release the lock
-        // TODO: Implement stub path and app model path on the functions.
-        // TODO: Complete the docblocks.
+	    // Command inputs
 
-		$this->makeViews($output);
-		$this->makeController($output);
+	    // Make command.
+		$this->makeViews($this->getStubPath(), '', $output);
+		$this->makeController($this->getStubPath(), '', $output);
+		$this->makeDatabase('', '', '', '', '', $output);
 		$this->makeModels($this->getStubPath(), $this->getAppModelPath(), $output);
 	}
 }
