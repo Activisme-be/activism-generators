@@ -17,7 +17,10 @@ class CreateAuthCommand extends BaseCommand
 	 */
 	protected function configure()
 	{
-		$this->setName('make:auth')->setDescription('Create authencation system');
+		// TODO: Set argument for database name, user, password, host, port.
+		
+		$this->setName('make:auth')
+			->setDescription('Create authencation system');
 	}
 
 	/**

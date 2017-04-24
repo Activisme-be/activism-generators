@@ -20,9 +20,9 @@ trait AuthScaffolding
     /**
      * Create the needed database models.
      *
-     * @param  string
-     * @param  string
-     * @param  OutputInterface $output
+     * @param  string			$stubPath	The path to the model stub in the package.
+     * @param  string			$modelPath	The path where the model should be placed in the application.
+     * @param  OutputInterface 	$output
      * @return void
      */
 	public function makeModels($stubPath, $modelPath, OutputInterface $output)
