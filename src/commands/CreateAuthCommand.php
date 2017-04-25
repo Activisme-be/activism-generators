@@ -45,11 +45,16 @@ class CreateAuthCommand extends BaseCommand
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 	    // Command inputs
+        $host = $input->getOption('db-host');
+        $port = $input->getOption('db-port');
+        $user = $input->getArgument('db-user');
+        $pass = $input->getArgument('db-pass');
+        $name = $input->getArgument('db-name');
 
 	    // Make command.
-		$this->makeViews($this->getStubPath(), '', $output);
-		$this->makeController($this->getStubPath(), '', $output);
-		$this->makeDatabase('', '', '', '', '', $output);
+		$this->makeViews($this->getStubPath(), $this->getAppViewPath(), $output);
+		$this->makeController($this->getStubPath(), $this->getAppControllerPath(), $output);
+		$this->makeDatabase($name, $user, $pass, $host, $port, $output);
 		$this->makeModels($this->getStubPath(), $this->getAppModelPath(), $output);
 	}
 }
