@@ -15,10 +15,11 @@ use Symfony\Component\Console\Command\Command;
  */
 class BaseCommand extends Command
 {
-	protected $stubPath;            /** @var string $stubPath¨			The path to the stubs.        			*/
+	protected $stubPath;            /** @var string $stubPath 			The path to the stubs.        			*/
     protected $appControllerPath;   /** @var string $appControllerPath 	The path to the application controllers.*/
     protected $appModelPath;        /** @var string $appModelPath		The path to the application models      */
 	protected $appLibraryPath;     	/** @var string $appLibraryPath		The path for the application libraries. */
+    protected $appViewPath;         /** @var string $appViewPath        The path to the application views.      */
 
     /**
      * BaseCommand constructor.
@@ -33,6 +34,7 @@ class BaseCommand extends Command
         $this->appControllerPath  = './application/controllers';
         $this->appModelPath       = './application/models';
         $this->appLibraryPath     = './application/libraries';
+        $this->appViewPath        = './application/view';
     }
 
 	/**
@@ -74,6 +76,16 @@ class BaseCommand extends Command
 	{
 		return $this->appLibraryPath;
 	}
+
+    /**
+     * Get the application views path.
+     *
+     * @return string
+     */
+	public function getAppViewPath()
+    {
+        return $this->appViewPath;
+    }
 
     /**
      * Check if a given file exists.

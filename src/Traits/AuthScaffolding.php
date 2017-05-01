@@ -5,15 +5,25 @@ namespace ActivismeBe\Artillery\Traits;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @todo docblock
+ * Class AuthScaffolding
+ *
+ * @package ActivismeBe\Artillery\Traits
  */
 trait AuthScaffolding
 {
-
-	public function makeViews(OutputInterface $output)
+    /**
+     * Make the views in the application.
+     *
+     * @param  string           $stubPath
+     * @param  string           $viewsPath
+     * @param  OutputInterface  $output
+     * @return void
+     */
+	public function makeViews($stubPath, $viewsPath, OutputInterface $output)
 	{
-
+        //
 	}
+
 
     /** 
      * @param  string           $stubPath           The path to the authencation stubs. 
@@ -31,7 +41,39 @@ trait AuthScaffolding
         } else {
             $output->writeln('<error>The controller already exists.</error>');
         }
-	}
+
+    /**
+     * Create the authencation tables in the database.
+     *
+     * @param  string           $database The database name.
+     * @param  string           $user The database user.
+     * @param  string           $password The database user his password.
+     * @param  int|string       $host The host for the database.
+     * @param  integer          $port The port from the database server.
+     * @param  OutputInterface  $output An output interface instance
+     * @return void
+     */
+	public function makeDatabase($database = 'localhost', $user, $password, $host = 3306, $port, OutputInterface $output)
+    {
+        try {
+            $dsn      = "mysql: dbname={$database};host={$host};port={$port}";
+            $stubPath = __DIR__ . '/../stubs/auth/migrations';
+
+            $server = new \PDO($dsn, $user, $password, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
+
+            $server->query(file_get_contents("{$stubPath}/migration-ban.sql"));
+            $server->query(file_get_contents("{$stubPath}/migration-users.sql"));
+            $server->query(file_get_contents("{$stubPath}/migration-permissions.sql"));
+            $server->query(file_get_contents("{$stubPath}/migration-abilities.sql"));
+            $server->query(file_get_contents("{$stubPath}/migration-relations.sql"));
+
+            $server = null; // Close DB server connection.
+
+            $output->writeln('<info>The database is migrated.</info>');
+        } catch (\PDOException $exceptionData) {
+            throw new \ActivismeBe\Artillery\Exceptions\DatabaseException($exceptionData);
+        }
+    }
 
     /**
      * Create the needed database models.
