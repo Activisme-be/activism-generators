@@ -1,0 +1,181 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Authencation controller
+ *  
+ * @author 		ActivismeBE <info@activisme.be>
+ * @copyright 	ActivismeBE <info@activisme.be>
+ * @license		MIT LICENSE 
+ * @since 		2017
+ * @package		Artillery
+ */
+class Authencation extends CI_Controller 
+{
+	public $user        = []; /** @var mixed|array $user         The authencated userdata.         */
+	public $permissions = []; /** @var mixed|array $permissions  The authencated user permissions. */
+	public $abilities   = []; /** @var mixed|array $abilities    The authencated user abilities.   */
+
+	/**
+	 * Authencation constructor. 
+	 *
+	 * @return void
+	 */
+	public function __construct() 
+	{
+		parent::__construct(); 
+		$this->load->library(['session', 'blade', 'form_validation']);
+		$this->load->helper(['url']);
+
+		$this->user 		= $this->session->userdata('user'); 
+		$this->permissions 	= $this->session->userdata('permissions'); 
+		$this->abilities 	= $this->session->userdata('abilities');
+	}
+
+	/** 
+	 * The login view for the user. 
+	 *
+	 * @return blade instance.
+	 */ 
+	public function index() 
+	{
+		$data['title'] = 'Inloggen';
+		return $this->blade->render('auth/login', $data);
+	}
+
+	/**
+	 * Base method for validating the credentials. 
+	 *
+	 * @return response|blade instance. 
+	 */
+	public function verify() 
+	{
+		$this->form_validation->set_rules('email', 'email', 'trim|required');
+		$this->form_validation->set_rules('password', 'password', 'trim|required|callback_check_database');
+
+		if ($this->form_validation->run() === false) { // Form validation fails. 
+			$data['title'] = 'Inloggen';
+
+			$FlashMessage =  'De gebruikersnaam en het wachtwoord die je hebt ingevoerd komen niet overeen met ons archief. Controlleer de gegevens en probeer het opnieuw.';
+
+			$this->session->set_flashdata('class', 'alert alert-danger');
+			$this->session->set_flashdata('message', $FlashMessage);
+
+			return $this->blade->render('auth/login', $data);
+		}
+
+		return redirect(site_url('backend'));
+	}
+
+	/** 
+	 * Check the given credentials against the database. 
+	 * 
+	 * @param  string $password The password for the user. 
+	 * @return Blade instance|Response 
+	 */
+	public function check_database($password) 
+	{
+		$MySQL['user'] = Authencate::where('email', $this->input->post('email', true))
+			->with(['permissions', 'abilities'])
+			->where('blocked', 'N')
+			->where('password', md5($password));
+
+		// var_dump($MySQL['user']->get());
+		// die();
+
+		if ((int) $MySQL['user']->count() === 1) { // User has been found in the system. 
+			$authencation = []; // Empty userdata array. 
+			$permissions  = []; // Empty ermissions array. 
+			$abilities    = []; // Empty abilities array. 
+
+			foreach ($MySQL['user']->get() as $user) {
+				foreach ($user->permissions as $permission) {
+					array_push($permissions, $permission->name);
+				}
+
+				foreach ($user->abilities as $ability) {
+					array_push($abilities, $ability->name);
+				}
+
+				$authencation['id']       = $user->id; 
+				$authencation['name']     = $user->name; 
+				$authencation['email']    = $user->email; 
+				$authencation['username'] = $user->username;
+
+				$this->session->set_userdata('user', $authencation); 
+				$this->session->set_userdata('permissions', $permissions); 
+				$this->session->set_userdata('abilities', $abilities);
+
+
+				return true;
+			}
+		}
+
+		$this->session->set_userdata('class', 'alert alert-danger'); 
+		$this->session->set_flashdata('message', 'Verkeerde gegevens ingevoerd.'); 
+
+		$this->form_validation->set_message('check_database', 'Foutieve login gegevens'); 
+
+		return false;
+	}
+
+	/**
+	 * Register page for the users. 
+	 *
+	 * @return blade instance
+	 */
+	public function register() 
+	{
+		$data['title'] = 'Registreer';
+		return $this->blade->render('auth/register', $data);
+	}
+
+	/**
+	 * Store the new user in the system. 
+	 * 
+	 * @return Response|Blade view. 
+	 */
+	public function store() 
+	{
+		$this->form_validation->set_rules('name', 'Naam', 'trim|required');
+		$this->form_validation->set_rules('username', 'Gebruikersnaam', 'trim|required|is_unique[users.username]');
+		$this->form_validation->set_rules('email', 'Email adres', 'trim|required|is_unique[users.email]');
+		$this->form_validation->set_rules('password', 'Wachtwoord', 'trim|required|matches[password_confirmation]');
+		$this->form_validation->set_rules('password_confirmation', 'bevestiging', 'trim|required');
+
+		if ($this->form_validation->run() === false) { // Validation fails
+			$data['title'] = 'Registreren';
+			return $this->blade->render('auth/register', $data);
+		}
+
+		$input['name'] 		= $this->input->post('name', true);
+		$input['username']	= $this->input->post('username', true);
+		$input['email']		= $this->input->post('email', true);
+		$input['password']	= md5($this->input->post('password', true));
+		$input['ban_id']	= 0;
+		$input['blocked']	='N';
+
+		if (Authencate::create($input)) { // The user has been stored. 
+			$this->session->set_flashdata('class', 'alert alert-success');
+			$this->session->set_flashdata('message', 'The gebruiker is aangemaakt.');
+		}
+
+		return redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	/**
+	 * Log the user out off the system.
+	 *
+	 * @return Redirect
+	 */
+	public function logout()
+	{
+		$data = $this->session;
+		
+		if ($data->unset_userdata('user') && $data->unset_userdata('permissions') && $data->unset_userdata('abilities')) {
+			$data->set_flashdata('class', 'alert alert-success');
+			$data->set_flashdata('message', 'U bent nu uitgelogd.');
+		}
+
+		return redirect(base_url());
+	}
+}

@@ -2,27 +2,43 @@
 
 namespace ActivismeBe\Artillery\Traits;
 
-
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @todo docblock
+ */
 trait AuthScaffolding
 {
+
 	public function makeViews(OutputInterface $output)
 	{
 
 	}
 
-	public function makeController(OutputInterface $output)
-	{
+    /** 
+     * @param  string           $stubPath           The path to the authencation stubs. 
+     * @param  string           $controllerPath     
+     * @param  OutputInterface  $output
+     * @return void
+     */ 
+	public function makeController($stubPath, $controllerPath, OutputInterface $output)
+    {
+        $stubData = file_get_contents("{$stubPath}/auth/authencation.stub");
 
+        if (! file_exists($controllerPath = "{$controllerPath}/Authencation.php")) {
+            file_put_contents($controllerPath, $stubData); 
+            $output->writeln('<info>The controller has been created');
+        } else {
+            $output->writeln('<error>The controller already exists.</error>');
+        }
 	}
 
     /**
      * Create the needed database models.
      *
-     * @param  string
-     * @param  string
-     * @param  OutputInterface $output
+     * @param  string           $stubPath   The path to the authencation stubs. 
+     * @param  string           $modelPath  The path to the application models. 
+     * @param  OutputInterface  $output     An Output Interface instance. 
      * @return void
      */
 	public function makeModels($stubPath, $modelPath, OutputInterface $output)
