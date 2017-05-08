@@ -8,7 +8,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @todo docblock
+ * Class ModelCodeigniterCommand
+ *
+ * @package ActivismeBe\Artillery\Commands
  */
 class ModelCodeigniterCommand extends BaseCommand
 {

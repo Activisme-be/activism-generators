@@ -2,6 +2,7 @@
 <?php
 
 use ActivismeBe\Artillery\Commands\ControllerCommand;
+use ActivismeBe\Artillery\Commands\CreateLibraryCommand;
 use ActivismeBe\Artillery\Commands\ModelCodeigniterCommand;
 use ActivismeBe\Artillery\Commands\ModelEloquentCommand;
 use Symfony\Component\Console\Application;
@@ -15,7 +16,7 @@ $shell->add(new ModelCodeigniterCommand());
 $shell->add(new ModelEloquentCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateMiddlewareCommand())
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
-// $shell->add(new \ActivismeBe\Artillery\Commands\CreateLibraryCommand());
+$shell->add(new CreateLibraryCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLicenseCommand());
 
 $shell->run();
