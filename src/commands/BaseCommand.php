@@ -20,6 +20,7 @@ class BaseCommand extends Command
     protected $appModelPath;        /** @var string $appModelPath		The path to the application models      */
 	protected $appLibraryPath;     	/** @var string $appLibraryPath		The path for the application libraries. */
     protected $appViewPath;         /** @var string $appViewPath        The path to the application views.      */
+    protected $appMiddlewarePath;   /** @var string $appMiddlewarePath  The path to the application middlewares */
 
     /**
      * BaseCommand constructor.
@@ -35,6 +36,7 @@ class BaseCommand extends Command
         $this->appModelPath       = './application/models';
         $this->appLibraryPath     = './application/libraries';
         $this->appViewPath        = './application/view';
+        $this->appMiddlewarePath  = './application/middlewares'; 
     }
 
 	/**
@@ -76,6 +78,16 @@ class BaseCommand extends Command
 	{
 		return $this->appLibraryPath;
 	}
+
+    /**
+     * Get the application middleware path.
+     *
+     * @return string
+     */
+    public function getAppMiddlewarePath()
+    {
+        return $this->appMiddlewarePath;
+    }
 
     /**
      * Get the application views path.
