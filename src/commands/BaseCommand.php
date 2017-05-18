@@ -5,13 +5,21 @@ namespace ActivismeBe\Artillery\Commands;
 use Symfony\Component\Console\Command\Command;
 
 /**
- * @todo docblock
+ * BaseCommand
+ *
+ * @author      Tim Joosten   <Topairy@gmail.com>
+ * @copyright   Tim Joosten   <Topairy@gmail.com>
+ * @license:    MIT license
+ * @since       2017
+ * @package     ActivismeBe\Artillery\Commands
  */
 class BaseCommand extends Command
 {
-    protected $stubPath;            /** */
-    protected $appControllerPath;   /** */
-    protected $appModelPath;        /** */
+	protected $stubPath;            /** @var string $stubPath 			The path to the stubs.        			*/
+    protected $appControllerPath;   /** @var string $appControllerPath 	The path to the application controllers.*/
+    protected $appModelPath;        /** @var string $appModelPath		The path to the application models      */
+	protected $appLibraryPath;     	/** @var string $appLibraryPath		The path for the application libraries. */
+    protected $appViewPath;         /** @var string $appViewPath        The path to the application views.      */
 
     /**
      * BaseCommand constructor.
@@ -22,13 +30,18 @@ class BaseCommand extends Command
     {
         parent::__construct();
 
-        $this->stubPath          = __DIR__ . '/../stubs';
-        $this->appControllerPath = './application/controllers';
-        $this->appModelPath      = './application/models';
+        $this->stubPath           = __DIR__ . '/../stubs';
+        $this->appControllerPath  = './application/controllers';
+        $this->appModelPath       = './application/models';
+        $this->appLibraryPath     = './application/libraries';
+        $this->appViewPath        = './application/view';
     }
-    /**
-     * @todo docblock
-     */
+
+	/**
+	 * Get the path for the package stubs.
+	 *
+	 * @return string
+	 */
     public function getStubPath()
     {
         return $this->stubPath;
@@ -44,13 +57,34 @@ class BaseCommand extends Command
         return $this->appControllerPath;
     }
 
-    /**
-     *
-     *
-     */
+	/**
+	 * Model path for the codeigniter application.
+	 *
+	 * @return string
+	 */
     public function getAppModelPath()
     {
         return $this->appModelPath;
+    }
+
+	/**
+	 * Get the application library path.
+	 *
+	 * @return string
+	 */
+    public function getAppLibraryPath()
+	{
+		return $this->appLibraryPath;
+	}
+
+    /**
+     * Get the application views path.
+     *
+     * @return string
+     */
+	public function getAppViewPath()
+    {
+        return $this->appViewPath;
     }
 
     /**
@@ -65,14 +99,17 @@ class BaseCommand extends Command
         if (! file_exists($fullPath = $filepath)) {
             return $fullPath;
         } else {
-            $formatter = $this->getHelper('formatter');
             return $output->writeln('<error>The controller already exists.</error>');
         }
     }
 
-    /**
-     * @todo docblock
-     */
+	/**
+	 * Get the content form the stub.
+	 *
+	 * @param  string $filePath
+	 * @param  string $name			The name from the stub file.
+	 * @return bool|mixed|string
+	 */
     protected function getStubContent($filePath, $name)
     {
         $stub = file_get_contents($filePath);
@@ -81,12 +118,16 @@ class BaseCommand extends Command
         return $stub;
     }
 
-    /**
-     * @todo docblock
-     */
-    protected function writeFile($filename, $stub)
+	/**
+	 * Write a new stub to it's destination.
+	 *
+	 * @param  string $filePath 	The path for the file.
+	 * @param  mixed  $stub			The stub data.
+	 * @return bool
+	 */
+    protected function writeFile($filePath, $stub)
     {
-        if (file_put_contents($filename, $stub)) {
+        if (file_put_contents($filePath, $stub)) {
             return true;
         }
 

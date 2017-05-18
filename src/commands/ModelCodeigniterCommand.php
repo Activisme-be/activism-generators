@@ -8,7 +8,14 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @todo docblock
+ * ModelCodeigniterCommand
+ *
+ * @author      Tim Joosten   <Topairy@gmail.com>
+ * @copyright   Tim Joosten   <Topairy@gmail.com>
+ * @license:    MIT license
+ * @since       2017
+ * @package     Artillery
+ * @subpackage  ActivismeBe\Artillery\Commands
  */
 class ModelCodeigniterCommand extends BaseCommand
 {
@@ -20,7 +27,7 @@ class ModelCodeigniterCommand extends BaseCommand
     protected function configure()
     {
         $this->setName('make:model-codeigniter')
-            ->setDescription('Create a new model')
+            ->setDescription('Create a new CodeIgniter model')
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the model class')
             ->addOption('suffix', null, InputOption::VALUE_OPTIONAL, 'Default: _m, the model suffix will be replaced with the defined.');
     }
@@ -46,7 +53,7 @@ class ModelCodeigniterCommand extends BaseCommand
      * @param  string           $model      A model name
      * @param  string           $suffix     Suffix for the model name.
      * @param  OutputInterface  $output     An OutputInterface instance.
-     * @return void|bool
+     * @return bool
      */
     private function make($model, $suffix, OutputInterface $output)
     {

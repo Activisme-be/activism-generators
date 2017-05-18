@@ -8,14 +8,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Disclaimer controller.
+ * ControllerCommand
  *
  * @author      Tim Joosten   <Topairy@gmail.com>
  * @copyright   Tim Joosten   <Topairy@gmail.com>
  * @license:    MIT license
  * @since       2017
  * @package     Artillery
- * @subpackage  Controller command.
+ * @subpackage  ActivismeBe\Artillery\Commands
  */
 class ControllerCommand extends BaseCommand
 {
