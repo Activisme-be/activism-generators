@@ -41,6 +41,7 @@ trait AuthScaffolding
         } else {
             $output->writeln('<error>The controller already exists.</error>');
         }
+    }
 
     /**
      * Create the authencation tables in the database.

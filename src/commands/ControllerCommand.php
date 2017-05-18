@@ -22,7 +22,7 @@ class ControllerCommand extends BaseCommand
     /**
      * Command configuration.
      *
-     * @return void.
+     * @return void
      */
     protected function configure()
     {

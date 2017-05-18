@@ -22,7 +22,7 @@ class ModelCodeigniterCommand extends BaseCommand
     /**
      * Command configuration.
      *
-     * @return void.
+     * @return void
      */
     protected function configure()
     {
