@@ -1,11 +1,18 @@
 #!/usr/bin/env php
 <?php
 
+use ActivismeBe\Artillery\Commands\ControllerCommand;
+use ActivismeBe\Artillery\Commands\CreateLibraryCommand;
+use ActivismeBe\Artillery\Commands\ModelCodeigniterCommand;
+use ActivismeBe\Artillery\Commands\ModelEloquentCommand;
+use Symfony\Component\Console\Application;
+
 // Debugging code
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 //> End debugging code
+
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -18,6 +25,7 @@ $shell->add(new \ActivismeBe\Artillery\Commands\CreateLibraryCommand());
 $shell->add(new \ActivismeBe\Artillery\Commands\CreateAuthCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateMiddlewareCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateHelperCommand());
+$shell->add(new CreateLibraryCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLicenseCommand());
 // $shell->add(new \ActivismeBe\Artillery\Commands\CreateLanguageFileCommand());
 
