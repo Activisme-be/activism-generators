@@ -2,6 +2,6 @@
 
 [UNDER DEVELOPMENT]: Generator for the most common classes during development
 
-# License 
+## License 
 
 This project repository is released under the [MIT](LICENSE)
